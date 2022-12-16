@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="answerService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <EntityContainer Name="EntityContainer">
+                <EntitySet Name="questions_optn" EntityType="answerService.questions_optn">
+                    <NavigationPropertyBinding Path="ANSWERS" Target="answer"/>
+                </EntitySet>
+                <EntitySet Name="answer" EntityType="answerService.answer">
+                    <NavigationPropertyBinding Path="qus_ID" Target="questions_optn"/>
+                </EntitySet>
+            </EntityContainer>
+            <EntityType Name="questions_optn">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+                <NavigationProperty Name="ANSWERS" Type="answerService.answer" Partner="qus_ID">
+                    <OnDelete Action="Cascade"/>
+                    <ReferentialConstraint Property="ID" ReferencedProperty="qus_ID_ID"/>
+                </NavigationProperty>
+                <Property Name="qus_text" Type="Edm.String" MaxLength="1024"/>
+                <Property Name="qus_option1" Type="Edm.String" MaxLength="100"/>
+                <Property Name="qus_option2" Type="Edm.String" MaxLength="100"/>
+                <Property Name="qus_option3" Type="Edm.String" MaxLength="100"/>
+                <Property Name="qus_option4" Type="Edm.String" MaxLength="100"/>
+                <Property Name="qus_type" Type="Edm.String" MaxLength="1"/>
+                <Property Name="qus_created" Type="Edm.String" MaxLength="20"/>
+                <Property Name="qus_date" Type="Edm.DateTimeOffset"/>
+            </EntityType>
+            <EntityType Name="answer">
+                <Key>
+                    <PropertyRef Name="qus_ID_ID"/>
+                    <PropertyRef Name="ans_ID"/>
+                </Key>
+                <NavigationProperty Name="qus_ID" Type="answerService.questions_optn" Partner="ANSWERS">
+                    <ReferentialConstraint Property="qus_ID_ID" ReferencedProperty="ID"/>
+                </NavigationProperty>
+                <Property Name="qus_ID_ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="ans_ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="ans_text" Type="Edm.String" MaxLength="100"/>
+                <Property Name="ans_created" Type="Edm.String" MaxLength="20"/>
+                <Property Name="ans_date" Type="Edm.DateTimeOffset"/>
+            </EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

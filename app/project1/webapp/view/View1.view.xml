@@ -1,0 +1,15 @@
+<mvc:View controllerName="cap.project1.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:but="sap.m.Button" 
+    xmlns:l="sap.ui.layout">
+    <Page id="page" title="{i18n>title}">
+       <content>
+       <l:VerticalLayout id="_IDGenVerticalLayout1" class="sapUiContentPadding" width="100%">
+		<Text id="_IDGenText1" text= "{QuestionModel>/aItems/0/qus_text}" />
+       	<Button id="_IDGenButton1" text="{i18n>iWantToNavigate}" press=".onDisplayNotFound" class="sapUiTinyMarginEnd"/>
+	    <Button id="_IDGenButton2" text="{i18n>ShowEmployeeList}" press=".onNavToEmployees" class="sapUiTinyMarginEnd"/>
+        </l:VerticalLayout>
+       </content>
+    </Page>
+</mvc:View>

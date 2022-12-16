@@ -1,0 +1,60 @@
+{
+	"overview": {
+		"view": "View1",
+		"View1": "overview",
+		"parentScreen": "",
+		"keyFields": {},
+		"urlParameters": {},
+		"placeHolderLabel": "",
+		 "entitySet":  "/answer/questions_optn",              
+		"modelName": "QuestionModel",
+		"pageTitle": "mainView",
+		"toastMsg": "cnfrmTst",
+		"uiControl": "toTable",
+		"UI": {
+			"footer": {}
+		},
+		"childScreens": {
+			"IdocItems": "idocitems",
+			"idocmassedit": "idocmassedit"
+		}
+	},
+
+	"idocitems": {
+		"view": "Idoc_Items",
+		"Idoc_Items": "idocitems",
+		"parentScreen": "mainview",
+		"keyFields": {},
+		"filters": {
+			"IDoc_Number": ""
+		},
+		"urlParameters": {
+			"$expand": "Nav_matnr_details"
+		},
+		"placeHolderLabel": "EnterTO",
+		"pageTitle": "putByTo",
+		"toastMsg": "cnfrmTst",
+		"uiControl": "toTable",
+		"entitySet": "/IDoc_detailsSet",
+		"modelName": "IdocItemModel"
+	},
+	"idocmassedit": {
+		"view": "Idoc_MassEdit",
+		"Idoc_MassEdit": "idocmassedit",
+		"parentScreen": "mainview",
+		"keyFields": {},
+		"filters": {
+			"IDoc_Number": ""
+		},
+		"urlParameters": {
+			"$expand": "Nav_matnr_details"
+		},
+		"placeHolderLabel": "EnterTO",
+		"pageTitle": "putByTo",
+		"toastMsg": "cnfrmTst",
+		"uiControl": "toTable",
+		"entitySet": "/Idoc_massSet",
+		"modelName": "massEditModel"
+	}
+
+}
